@@ -1,0 +1,113 @@
+	import java.util.*;
+	//import org.apache.http.NameValuePair.*;
+	import java.util.concurrent.TimeUnit;
+
+	import org.openqa.selenium.*;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	//import org.openqa.selenium.interactions.Actions;
+	//import org.openqa.selenium.support.ui.ExpectedConditions;
+	//import org.openqa.selenium.support.ui.ExpectedConditions;
+	//import org.openqa.selenium.support.ui.WebDriverWait;
+	//import java.util.Properties;
+	//import java.io.FileInputStream;
+	//import org.openqa.selenium.remote.RemoteWebDriver;
+public class Jira {
+		public static void main(String[] args) throws Exception
+		{
+			
+			System.setProperty("webdriver.chrome.driver", "D:\\Abhik\\eclipse\\chromedriver_win32\\chromedriver.exe");        
+			WebDriver driver = new ChromeDriver();
+	//launch the Chrome browser and open the application url
+			driver.get("https://jira.simplivt.local/login.jsp");
+			driver.manage().window().maximize();
+			Scanner in=new Scanner(System.in);
+			System.out.println("Enter User Name:");
+			String name=in.nextLine();
+			WebElement uname = driver.findElement(By.id("login-form-username"));
+	  uname.sendKeys(name);
+	  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	  Scanner in1=new Scanner(System.in);
+		System.out.println("Enter Password:");
+		String password=in1.nextLine(); 
+	  
+	  WebElement pwd=driver.findElement(By.id("login-form-password"));
+	  pwd.sendKeys(password);
+	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	 driver.findElement(By.name("login")).click();
+	  Thread.sleep(5000);
+	 WebElement txtbox = driver.findElement(By.xpath("//*[@id='find_link']"));
+	 txtbox.click();
+	 
+	 
+	 WebElement menuOption = driver.findElement(By.xpath("//*[@id='issues_new_search_link_lnk']"));
+	 menuOption.click();
+	 Thread.sleep(1000);
+	 WebElement menuOption1 = driver.findElement(By.className("criteria-wrap"));
+	 menuOption1.click();
+	 WebElement chkbox = driver.findElement(By.xpath("//*[@id='12501-1']/label/input"));
+	 chkbox.click();
+	 Thread.sleep(1000);
+	 WebElement chkbox2 = driver.findElement(By.className("fieldLabel"));
+	 chkbox2.click();
+	 Thread.sleep(5000);
+	 WebElement chkbox3 = driver.findElement(By.xpath("//*[@id='1-2']/label"));
+	 chkbox3.click();
+	 Thread.sleep(2000);
+	 WebElement chkbox4 = driver.findElement(By.xpath("//*[@id='content']/div[1]/div[3]/div/form/div[1]/div[1]/div[1]/div[1]/div/div[1]/ul/li[6]/button"));
+	 chkbox4.click();
+	 Thread.sleep(2000);
+	 WebElement txtbox1=driver.findElement(By.xpath("//*[@id='criteria-input']"));
+	 txtbox1.sendKeys("Resolution");
+	 Thread.sleep(2000);
+	 WebElement bt1=driver.findElement(By.xpath("//*[@id='resolution-3']/label/input"));
+     bt1.click();
+     Thread.sleep(2000);
+     WebElement bt2=driver.findElement(By.xpath("//*//*[@id='searcher-resolution-input']"));
+     bt2.sendKeys("Invalid");
+     WebElement txtbox3=driver.findElement(By.xpath("//*[@id='4-4']"));
+     txtbox3.click();
+     Thread.sleep(2000);
+     WebElement chkbox5 = driver.findElement(By.xpath("//*[@id='content']/div[1]/div[3]/div/form/div[1]/div[1]/div[1]/div[1]/div/div[1]/ul/li[6]/button"));
+	 chkbox5.click();
+	 WebElement txtbox4=driver.findElement(By.xpath("//*[@id='criteria-input']"));
+	 txtbox4.sendKeys("Reporter");
+	 WebElement txtbox5=driver.findElement(By.xpath("//*[@id='reporter-5']/label/input"));
+	 txtbox5.click();
+	 WebElement txtbox6=driver.findElement(By.xpath("//*[@id='reporter-input']"));
+	 txtbox6.sendKeys("anag");
+	 WebElement txtbox7=driver.findElement(By.xpath("//*[@id='user:anag-6']/label/input"));
+	 txtbox7.click();
+	 /*WebElement txtbox8=driver.findElement(By.xpath("//*[@id='AJS_DROPDOWN__17']"));
+	 txtbox8.click();
+	 WebElement menuOpt=driver.findElement(By.xpath("//*[@id='currentExcelFields']"));
+	 menuOpt.click();*/
+	 Thread.sleep(2000);
+	 WebElement chkbox6 = driver.findElement(By.xpath("//*[@id='content']/div[1]/div[3]/div/form/div[1]/div[1]/div[1]/div[1]/div/div[1]/ul/li[6]/button"));
+	 chkbox6.click();
+	 Thread.sleep(3000);
+	 WebElement search1=driver.findElement(By.xpath("//*[@id='criteria-input']"));
+	 search1.sendKeys("Resolution Date");
+	 Thread.sleep(2000);
+	 WebElement rdbt2=driver.findElement(By.xpath("//*[@id='resolutiondate-7']"));
+     rdbt2.click();
+     Thread.sleep(2000);
+     WebElement rdbt3=driver.findElement(By.xpath("//*[@id='dateBetweenRadio']"));
+     rdbt3.click();
+     Thread.sleep(2000);
+     Scanner in2=new Scanner(System.in);
+		System.out.println("Enter date from in 'd/MMM/yy' format: ");
+		String date1=in2.nextLine(); 
+	  WebElement dt=driver.findElement(By.xpath("//*[@id='issue-filter']/div[1]/div/div/div[3]/input[2]"));
+	  dt.sendKeys(date1);
+	  Scanner in3=new Scanner(System.in);
+		System.out.println("Enter date Upto in 'd/MMM/yy' format: ");
+		String date2=in3.nextLine(); 
+	  WebElement dt1=driver.findElement(By.xpath("//*[@id='issue-filter']/div[1]/div/div/div[3]/input[3]"));
+	  dt1.sendKeys(date2);
+	  Thread.sleep(2000);
+	  WebElement bttn=driver.findElement(By.xpath("//*[@id='issue-filter']/div[2]/div/input"));
+	  bttn.click();
+		}	
+	
+}
